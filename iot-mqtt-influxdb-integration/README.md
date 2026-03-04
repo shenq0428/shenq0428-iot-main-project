@@ -37,8 +37,8 @@ graph LR
 ```
 
 ----
-step 1 (Clone):git clone https://github.com/shenq0428/iot-mqtt-influxdb-integration.git
+- **step 1 (Clone)**:git clone https://github.com/shenq0428/iot-mqtt-influxdb-integration.git 
         cd iot-mqtt-influxdb-integration
-step 2 (Install Dependencies):pip install -r requirements.txt
-step 3 (Setup Config): setup own configuration in .env folder
-step 4 (Run): run the main code -> python main.py
+- **step 2 (Install Dependencies)**:pip install -r requirements.txt
+- **step 3 (Setup Config)**: setup own configuration in .env folder
+- **step 4 (Run)**: run the main code -> python main.py
