@@ -34,6 +34,7 @@ graph LR
     B -- Subscribe --> C{Python Script}
     C -- Parse & Map --> D[(InfluxDB)]
     D -- Analysis --> E[Grafana]
+```
 
 ----
 step 1 (Clone):git clone https://github.com/shenq0428/iot-mqtt-influxdb-integration.git
