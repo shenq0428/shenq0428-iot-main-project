@@ -41,7 +41,7 @@ graph LR
 - **step 1 (Clone)**:git clone https://github.com/shenq0428/shenq0428-iot-main-project.git
         cd mqttbroker-questdb-python
 - **step 2 (Install Dependencies)**:pip install -r requirements.txt
-- **step 3 (Setup Config)**: copy the example from (.evn.example) folder ,create a newfolder name (.env) and setup own configuration.
+- **step 3 (Setup Config)**: copy the example from (.env.example) folder ,create a newfolder name (.env) and setup own configuration.
 - **step 4 (Run)**: run the main code -> python main.py
 ----
 ## 🔍 Troubleshooting
