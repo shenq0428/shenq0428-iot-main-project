@@ -27,10 +27,14 @@ In Industrial IoT (IIoT), sensors often send high-frequency data in JSON format.
 
 ```mermaid
 graph LR
-    A[Sensors] -- JSON Over MQTT --> B(MQTT Broker)
-    B -- Subscribe --> C{Python Script}
-    C -- Parse & Insert --> D[(QuestDB)]
-    D -- SQL Query --> E[Grafana]
+    A[Sensors] -- "JSON Payload" --> B(MQTT Broker <br/><b>Data Source</b>)
+    B -- "Subscribe" --> C{Python Script <br/><b>The Worker</b>}
+    C -- "Parse & Insert" --> D[(QuestDB <br/><b>Destination</b>)]
+    
+    %% Style definitions
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#bbf,stroke:#333,stroke-width:2px
+    style D fill:#dfd,stroke:#333,stroke-width:2px
 ```
 
 ----
@@ -39,3 +43,17 @@ graph LR
 - **step 2 (Install Dependencies)**:pip install -r requirements.txt
 - **step 3 (Setup Config)**: setup own configuration in .env folder
 - **step 4 (Run)**: run the main code -> python main.py
+----
+## 🔍 Troubleshooting
+
+Based on real-world testing, if the script runs but behaves unexpectedly, refer to the following solutions:
+
+### 1. Script connected but no data received
+**Phenomenon:** The console shows `✅ 已成功连接到 NovaPlus Broker!` but remains silent without any incoming data logs.
+
+**Root Cause:** The `MQTT_TOPIC` in your `.env` is **statically defined** to a specific path (e.g., `data/SAMYSK_POM_123456`). If the actual sensor is publishing to a slightly different path or if the ID has changed, the script will ignore all other incoming traffic
+
+**Solution (The Wildcard Method):**
+1. Temporarily change your `.env` file to use a wildcard to listen to all traffic:
+   ```env
+   MQTT_TOPIC=#
