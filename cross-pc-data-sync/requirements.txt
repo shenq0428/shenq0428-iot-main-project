@@ -1,0 +1,10 @@
+# 核心框架与网络请求
+Flask==3.0.0
+requests==2.31.0
+python-dotenv==1.0.0
+
+# 数据库连接
+mysql-connector-python==8.2.0
+
+# MQTT (如果你保留了之前的采集脚本)
+paho-mqtt==1.6.1

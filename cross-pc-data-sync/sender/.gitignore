@@ -1,0 +1,11 @@
+# Python 忽略文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 环境变量 (非常重要！)
+.env
+
+# 日志与临时文件
+last_sync.txt
+*.log
