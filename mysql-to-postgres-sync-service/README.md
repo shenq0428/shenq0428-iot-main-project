@@ -1,7 +1,20 @@
+
 # 🚀 IoT Data Bridge: MySQL to PostgreSQL Sync Service
 
 This project is a high-performance data synchronization service built with **FastAPI**. It functions as a real-time monitor that observes a MySQL database (typically managed via phpMyAdmin) and automatically replicates new entries into a **PostgreSQL** database for advanced analytics or backup.
 
+## 📂 Folder Structure
+
+```text
+.
+├── .env                 # Private configuration file (Created by you)
+├── .env.example         # Template for configuration
+├── .gitignore           # Files to be ignored by Git
+├── main.py              # Main service script (FastAPI + Sync Logic)
+├── monitoring.py        # backup script of main.py
+├── README.md            # Project documentation
+└── requirements.txt     # Python dependency list
+```
 ---
 
 ## 📋 How It Works
