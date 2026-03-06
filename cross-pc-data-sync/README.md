@@ -1,82 +1,54 @@
-```
-cross-pc-data-sync/
-├── receiver/
-│   ├── .env                    # (Local & Private) Stores database credentials and Auth Token
-│   ├── .env.example            # Environment template for public reference
-│   ├── .gitignore              # Ensures .env is never uploaded to GitHub
-│   ├── receiver.py             # Main Flask API for receiving data
-│   └── Receiver_QuestDB_Mysql.py # Backup or advanced receiver logic
-├── sender/
-│   ├── .env                    # (Local & Private) Stores source credentials and Receiver IP
-│   ├── .env.example            # Environment template for public reference
-│   ├── .gitignore              # Ensures .env is never uploaded to GitHub
-│   ├── sender.py               # Main script for fetching and pushing data
-│   ├── Sender_QuestDB_Mysql.py # Backup or advanced sender logic
-│   └── last_sync.txt           # (Auto-generated) Stores the incremental sync progress
-├── requirements.txt            # Python dependencies for both scripts
-└── README.md                   # Installation, configuration, and network debugging guide
-```
+# 🛰️ Cross-PC Data Sync (QuestDB to MySQL)
 
-🛠️ Quick Start
-1. Installation
-Run the following command on both computers:
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Framework-Flask-green.svg)](https://flask.palletsprojects.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Bash
-pip install -r requirements.txt
-2. Configuration (.env Setup)
-You need to create a .env file in each folder. Use .env.example as a template.
-
-On Computer B (Receiver): Fill in your MySQL credentials and set a DATA_SAFE_TOKEN.
-
-On Computer A (Sender): Fill in your QuestDB credentials and set the RECEIVER_API_URL using PC B's IP.
-
-3. Finding Your IP Address
-To link the two computers, you need their IP addresses:
-
-Press Win + R, type cmd, and hit Enter.
-
-Type ipconfig and find the IPv4 Address.
-
-PC A's IP: Add this to PC B's .env under ALLOWED_SENDER_IP.
-
-PC B's IP: Add this to PC A's .env under RECEIVER_API_URL (e.g., http://10.x.x.x:8888/upload_data).
-
-🚀 Troubleshooting & Tips
-🔗 Use Tailscale (Recommended)
-If the computers are in different locations (not on the same Wi-Fi), use Tailscale.
-
-Look for the 100.x.x.x address in ipconfig after installing Tailscale.
-
-Tailscale IPs are static and secure, making them perfect for this setup.
-
-🧱 Windows Firewall
-If PC A gets a "Connection Refused" error, you must open port 8888 on PC B.
-Run this in PowerShell as Administrator:
-
-PowerShell
-New-NetFirewallRule -DisplayName "Flask_Receiver" -Direction Inbound -LocalPort 8888 -Protocol TCP -Action Allow
-📦 Incremental Sync
-The last_sync.txt file is automatically generated in the sender/ folder after the first successful sync.
-
-It remembers the last timestamp sent.
-
-If you delete this file, the script will re-sync all historical data from the beginning.
-
-🛡️ Security
-IP Whitelisting: Only the designated Sender IP can talk to the Receiver.
-
-Token Authorization: Every request must include the X-Data-Token header.
-
-Environment Safety: Your real passwords and tokens are stored in .env, which is ignored by Git to prevent leaks.
-
-
-
+A professional, secure, and incremental data synchronization system for IoT environments.
 
 ---
 
-### ✅ 最后的发布清单 (Ready to Push?)
-1.  **检查依赖**：确认 `requirements.txt` 里有 `python-dotenv`。
-2.  **检查安全**：确认你没把真实的 `.env` 传上去（`git status` 不应该看到它们）。
-3.  **运行测试**：在本地运行 `receiver.py` 看看能不能正常启动。
+## 🛠️ Quick Start Guide
 
-**这就是你的完整 README 了！如果你觉得已经准备好了，我会非常乐意帮你生成最后的 Git Push 命令。**
+| Step | Action | Command / Details |
+| :--- | :--- | :--- |
+| **1. Install** | Install dependencies on **both** PCs | `pip install -r requirements.txt` |
+| **2. Config** | Setup `.env` from `.env.example` | Create `.env` in `receiver/` and `sender/` folders |
+| **3. IP Lookup** | Find your IPv4 via CMD | Run `ipconfig` in Command Prompt |
+| **4. PC A Setup** | Configure **Sender** | Set `RECEIVER_API_URL` to PC B's IP address |
+| **5. PC B Setup** | Configure **Receiver** | Set `ALLOWED_SENDER_IP` to PC A's IP address |
+| **6. Run B** | Start the API on **PC B** | `python receiver/receiver.py` |
+| **7. Run A** | Start syncing on **PC A** | `python sender/sender.py` |
+
+---
+
+## 🔍 Network & Troubleshooting Reference
+
+| Category | Item | Solution / Command |
+| :--- | :--- | :--- |
+| **Connection** | **Tailscale** (Recommended) | Use `100.x.x.x` IP for static, cross-network syncing. |
+| **Security** | **Auth Token** | Ensure `DATA_SAFE_TOKEN` is identical in both `.env` files. |
+| **Firewall** | **Open Port 8888** | `New-NetFirewallRule -DisplayName "Flask" -LocalPort 8888 -Protocol TCP -Action Allow` |
+| **Syncing** | **Incremental Log** | `last_sync.txt` is auto-generated to prevent data duplication. |
+
+---
+
+## 📂 Project Structure
+
+```text
+cross-pc-data-sync/
+├── receiver/
+│   ├── .env                    # (Private) MySQL credentials & Auth Token
+│   ├── .env.example            # Environment template for PC B
+│   ├── .gitignore              # Protects .env from leaks
+│   ├── receiver.py             # Main Flask API
+│   └── Receiver_QuestDB_Mysql.py # Advanced receiver logic
+├── sender/
+│   ├── .env                    # (Private) Source credentials & Target IP
+│   ├── .env.example            # Environment template for PC A
+│   ├── .gitignore              # Protects .env from leaks
+│   ├── sender.py               # Main data fetcher and pusher
+│   ├── Sender_QuestDB_Mysql.py # Advanced sender logic
+│   └── last_sync.txt           # (Auto-generated) Stores sync progress
+├── requirements.txt            # Python dependencies
+└── README.md                   # This instruction file
