@@ -42,13 +42,13 @@ cross-pc-data-sync/
 │   ├── .env.example            # Environment template for PC B
 │   ├── .gitignore              # Protects .env from leaks
 │   ├── receiver.py             # Main Flask API
-│   └── Receiver_QuestDB_Mysql.py # Advanced receiver logic
+│   └── Receiver_QuestDB_Mysql.py # backup
 ├── sender/
 │   ├── .env                    # (Private) Source credentials & Target IP
 │   ├── .env.example            # Environment template for PC A
 │   ├── .gitignore              # Protects .env from leaks
 │   ├── sender.py               # Main data fetcher and pusher
-│   ├── Sender_QuestDB_Mysql.py # Advanced sender logic
+│   ├── Sender_QuestDB_Mysql.py # backup
 │   └── last_sync.txt           # (Auto-generated) Stores sync progress
 ├── requirements.txt            # Python dependencies
 └── README.md                   # This instruction file
