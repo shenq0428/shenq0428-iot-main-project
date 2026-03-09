@@ -1,4 +1,4 @@
-CREATE TABLE `power_readings` (
+CREATE TABLE `power_reading` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `timestamp` timestamp NULL DEFAULT current_timestamp(), -- Date and time of the reading
   `val` int(11) DEFAULT NULL,                            -- Total cumulative kWh

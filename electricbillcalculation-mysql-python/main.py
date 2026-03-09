@@ -41,8 +41,13 @@ if __name__ == "__main__":
                 subprocess.run([sys.executable, "electricity_total_cost.py"]) #
             elif cmd == 'exit':
                 print("👋 正在关闭系统...")
+                subprocess.run([sys.executable, "electricity_total_cost.py"])
+                print("✅ Final settlement complete. System shutting down.")
                 break
             else:
                 print("❓ 未知指令，请输入 'calc' 或 'exit'")
     except KeyboardInterrupt:
         print("\n👋 强制退出")
+        subprocess.run([sys.executable, "electricity_usage_difference.py"])
+        subprocess.run([sys.executable, "electricity_total_cost.py"])
+        print("✅ 结算完成，系统安全退出。")

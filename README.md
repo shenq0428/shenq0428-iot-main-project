@@ -6,5 +6,7 @@ SHENQ0428-IOT-MAIN-PROJECT/
 ├── 🐍 mqttbroker-influxdb-python/    # Time-series bridge for InfluxDB
 ├── ⚡ mqttbroker-questdb-python/     # High-performance bridge for QuestDB
 ├── 🔄 mysql-to-postgres-sync-service/# Database synchronization utility
+├── cross-pc-data-sync                  #
+├── electricbillcalculation-mysql-python #
 └── README.md                         # Main Project Guide
 ```

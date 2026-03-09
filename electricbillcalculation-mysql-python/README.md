@@ -37,10 +37,28 @@ cd electricbillcalculation-mysql-python
 pip install -r requirements.txt
 
 2. Copy .env.example into a new file name .env and insert your own configuration.
-3.Auto-Setup: Run the initialization script to create all tables and default rates automatically(with this script you doesn't need to copy and run all sql query one by one):
+
+3. set the databasename  in .env and create it example (DB_NAME=test3).
+
+4.Auto-Setup: Run the initialization script to create all tables and default rates automatically(with this script you doesn't need to copy and run all sql query one by one):
 python init_db.py
 
-3.🎮 Running the System
+5.🎮 Running the System
 You only need one terminal to run the entire system. Launch the multi-threaded controller:
 python main.py
 
+
+## 🧠 Technical Pipeline & Logic
+
+```mermaid
+graph LR
+    A[Simulator /<br/>Power Reading] -- "Raw Readings (1m)" --> B{Python Worker <br/><b>Analyzer</b>}
+    B -- "5-min Windows" --> C[(MySQL <br/><b>Usage Diff Table</b>)]
+    C -- "Apply Rates" --> D[(MySQL <br/><b>Total Cost Table</b>)]
+    D -- "calc command" --> E[Final Report]
+
+    %% 样式定义
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#dfd,stroke:#333,stroke-width:2px
+    style D fill:#dfd,stroke:#333,stroke-width:2px
+```
