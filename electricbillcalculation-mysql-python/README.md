@@ -1,6 +1,7 @@
 ⚡ Electric Bill Calculation (MySQL + Python)
 A automated utility billing system that calculates energy consumption differences and costs based on time-of-use (Morning/Night) rates.
 
+```text
 .
 ├── mysqldatabase-create/    # SQL schema initialization files
 │   ├── electricity_price_range.sql
@@ -16,6 +17,7 @@ A automated utility billing system that calculates energy consumption difference
 ├── electricity_total_cost.py # Daily billing aggregator
 ├── README.md                # Project documentation
 └── requirements.txt         # Python dependency list
+```
 
 ## 📋 How It Works
 1.Background Pipeline: The controller launches background threads to collect raw meter readings (every 60s) and analyze usage differences (every 5m).
