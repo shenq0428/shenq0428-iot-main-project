@@ -25,11 +25,12 @@ This project is a high-performance data synchronization service built with **Fas
 4.  **Data Integrity**: Utilizes PostgreSQL's `UNIQUE` constraint on the timestamp to prevent duplicate entries during sync recovery.
 
 ---
+```mermaid
 graph LR
     A[MySQL / phpMyAdmin] -- "Polling New IDs" --> B{Python Worker}
     B -- "Transform Data" --> C[(PostgreSQL)]
     B -- "Status API" --> D[Browser/User]
-    
+```
 
 ## 🛠️ Database Setup (Required)
 
