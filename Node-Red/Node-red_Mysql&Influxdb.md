@@ -1,3 +1,4 @@
+Canva : https://www.canva.com/design/DAHDs81o3YU/WzdQnhCHgtNSZu9Ch2T4ZA/edit?utm_content=DAHDs81o3YU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 # Multi-Tier IoT Data Pipeline: MySQL & InfluxDB Integration
 
 This project demonstrates an advanced industrial data pipeline that ingests MQTT-style telemetry and implements **Polyglot Persistence**. It intelligently routes data into two separate databases based on the data's nature: **MySQL** for structured metadata (a.1) and **InfluxDB** for high-frequency metrics (a.2).
