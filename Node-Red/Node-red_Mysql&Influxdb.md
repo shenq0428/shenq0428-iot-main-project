@@ -42,16 +42,15 @@ Note: You must initialize both databases before deploying the Node-RED flow.
 ### A. MySQL Configuration
 Execute this script to create the logging schema:
 ```sql
--- 1. Create the Database
-CREATE DATABASE IF NOT EXISTS smart_mill_db;
-USE smart_mill_db;
+-- 1. 确保使用的是你现有的数据库
+USE node_red_db;
 
--- 2. Create the Table for Metadata (a.1)
-CREATE TABLE IF NOT EXISTS device_status_logs (
+-- 2. 创建新表 (结构参考你之前的 test1，但增加了 status 字段)
+CREATE TABLE IF NOT EXISTS industrial_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     device_name VARCHAR(50),
+    voltage_value FLOAT,
     status_code INT,
-    log_message VARCHAR(100) DEFAULT 'DATA_RECEIVED',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
