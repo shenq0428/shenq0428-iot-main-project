@@ -1,0 +1,2 @@
+Multi-Tier IoT Data Pipeline: Relational & Time-Series Integration
+This project demonstrates a robust Industrial IoT (IIoT) data architecture using Node-RED to ingest MQTT telemetry and intelligently route data into two distinct databases: MySQL for structured metadata and InfluxDB for high-frequency time-series metrics.
