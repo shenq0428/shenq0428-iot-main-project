@@ -38,3 +38,24 @@ CREATE TABLE IF NOT EXISTS device_status_logs (
     log_message VARCHAR(100) DEFAULT 'DATA_RECEIVED',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+```
+### B. InfluxDB Configuration (Time-Series)
+Since InfluxDB 2.x is primarily configured via its Web UI, follow these steps to prepare the environment for **a.2 (Telemetry)** data:
+
+1. **Create a Bucket**:
+   - Log in to your InfluxDB dashboard (usually at `http://localhost:8086`).
+   - Navigate to **Load Data** > **Buckets**.
+   - Click **+ Create Bucket** and name it `sensor_data_stream`.
+   - Set a **Retention Policy** (e.g., `30 days`) to automatically manage storage and disk space.
+
+2. **Generate API Token**:
+   - Go to **Load Data** > **API Tokens**.
+   - Generate a new **"Read/Write API Token"** specifically for the `sensor_data_stream` bucket.
+   - **Note**: Copy this token immediately; you will need to paste it into the Node-RED InfluxDB node configuration.
+
+3. **Confirm Organization**:
+   - Check your profile or the **About** page to retrieve your exact **Organization Name**.
+   - *Warning: This field is case-sensitive (e.g., "MyOrg" is different from "myorg").*
+
+> [!TIP]
+> After setting up the bucket and token, ensure the InfluxDB node in Node-RED shows a green **"connected"** status. If it shows "not found", re-verify your Organization name spelling.
