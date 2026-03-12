@@ -14,7 +14,22 @@ The pipeline is designed to simulate industrial sensor behavior and handle data 
 - **MySQL Node**: Executes persistent relational storage for audit trails and status monitoring.
 - **InfluxDB Node**: Handles high-velocity telemetry data with optimized time-series storage.
 - **Catch Node**: A centralized error handler that captures any background connection issues without disrupting the flow.
-
+```mermaid
+graph LR
+    A[MQTT Sensor Data] --> B{Node-RED Logic}
+    B -- "a.1 (Metadata)" --> C[(MySQL)]
+    B -- "a.2 (Telemetry)" --> D[(InfluxDB)]
+    
+    subgraph Storage_Strategy
+    C -.- C_Note[Status Logs & Audit]
+    D -.- D_Note[High-Freq Metrics]
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#69f,stroke:#333,stroke-width:2px
+    style C fill:#4db,stroke:#333,stroke-width:2px
+    style D fill:#f96,stroke:#333,stroke-width:2px
+```
 
 
 ---
