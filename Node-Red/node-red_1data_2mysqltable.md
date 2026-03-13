@@ -38,3 +38,7 @@ graph LR
     style B fill:#f96,stroke:#333
     style C fill:#f96,stroke:#333
 ```
+💡 Architectural Memory Hook
+Method A is like a Post Office: One sorting center dispatches mail to different cities.
+
+Method B is like Individual Couriers: Each courier takes one letter to one specific city independently.
