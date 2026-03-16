@@ -1,3 +1,4 @@
+canva: https://www.canva.com/design/DAHEEvFM8d8/GO8nDZHs9ZIMZZ8QRxEcsQ/edit?utm_content=DAHEEvFM8d8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 # IoT Data Strategy: Centralized vs. Independent Branching
 
 This document compares two methods for routing sensor data into multiple MySQL tables, helping to visualize the architectural differences for future scaling.
