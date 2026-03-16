@@ -1,3 +1,4 @@
+canva: https://www.canva.com/design/DAHDygcdCko/4JjF5BS80YCulixF_14bSQ/edit?utm_content=DAHDygcdCko&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 # IoT Data Pipeline: Dual-Source MySQL Consolidation
 
 This project shows an industrial IoT pipeline focused on **Data Consolidation**. It captures data from two different sensors (e.g., Voltage and Current) and saves them into **one single MySQL table**.
